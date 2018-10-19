@@ -24,11 +24,14 @@ public class RegularExpressionTest {
     @Test
     public void testFloatNumberforCorrectness()
     {
-        Pattern pattern = Pattern.compile("-*\\d+,*\\d+");
+        Pattern pattern = Pattern.compile("-?\\d+,?\\d+");
         assertTrue(pattern.matcher("123,2341515132135").matches());
         assertTrue((pattern.matcher("-10").matches()));
         assertFalse(pattern.matcher("18-12").matches());
         assertFalse(pattern.matcher("123,").matches());
         assertTrue(pattern.matcher("10").matches());
+        assertFalse(pattern.matcher("-----123").matches());
+        assertFalse(pattern.matcher("123,123,123").matches());
+
     }
 }
